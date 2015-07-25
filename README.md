@@ -1,2 +1,2 @@
 # 2bit-adventure-game
-Character Creator, aka. kit out octowarren!
+: Character Creator, aka. kit out octowarren!

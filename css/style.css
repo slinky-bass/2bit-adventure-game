@@ -1,0 +1,77 @@
+.font {
+  font-family: "Cinzel", serif; }
+
+.strong {
+  font-weight: 600; }
+
+.clear_float {
+  clear: both;
+  line-height: 0;
+  font-size: 0; }
+
+body {
+  background: #efefef;
+  margin: 0;
+  padding: 0; }
+  body #wrapper {
+    width: 100%;
+    margin: 0 auto;
+    		/*@include tablet {
+        		width: 95%;
+      		}*/ }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      body #wrapper {
+        width: 85%; } }
+    @media (min-width: 1025px) and (max-width: 1600px) {
+      body #wrapper {
+        width: 75%; } }
+  body form {
+    display: inline-block;
+    width: 94%;
+    margin: 2% 0 3% 3%; }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      body form {
+        float: left;
+        width: 30%;
+        margin: 2% 0 3% 2%; } }
+    @media (min-width: 1025px) and (max-width: 1600px) {
+      body form {
+        float: left;
+        width: 30%;
+        margin: 2% 0 2% 2%; } }
+    body form fieldset {
+      background: #FFF;
+      margin: 3% 0; }
+      body form fieldset legend {
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        color: #900; }
+  body p {
+    margin: 5% auto; }
+  body figure {
+    position: relative;
+    width: 94%;
+    height: 500px;
+    margin: 0 3% 0 3%;
+    background-image: url("../sources/octowarren.png");
+    background-repeat: no-repeat;
+    background-size: 100%; }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      body figure {
+        display: inline-block;
+        float: right;
+        width: 60%;
+        margin: 2% 4% 0 0; } }
+    @media (min-width: 1025px) and (max-width: 1600px) {
+      body figure {
+        display: inline-block;
+        float: right;
+        width: 50%;
+        height: 700px;
+        margin: 2% 8% 0 0; } }
+    body figure img {
+      position: absolute;
+      max-width: 100%; }
+
+#druid_menu, #cleric_menu, #mage_menu {
+  display: none; }

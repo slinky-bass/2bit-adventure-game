@@ -1,0 +1,138 @@
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$widescreen-width: 1600px;
+$font: 'Cinzel', serif;
+
+@mixin mobile {
+  @media (min-width: #{0}) and (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile-width + 1px}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet-width + 1px}) and (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media (min-width: #{$desktop-width + 1px}) and (max-width: #{$widescreen-width}) {
+    @content;
+  }
+}
+
+.font {
+	font-family: $font;
+}
+
+.strong {
+	font-weight: 600;
+}
+
+.clear_float{
+	clear: both;
+	line-height: 0;
+	font-size: 0;
+	}
+
+body {
+	background: #efefef;
+	margin: 0;
+	padding: 0;
+
+	#wrapper{
+		width: 100%;
+		margin: 0 auto;
+
+		/*@include tablet {
+    		width: 95%;
+  		}*/
+
+  		@include desktop {
+    		width: 85%;
+  		}
+
+  		@include widescreen {
+    		width: 75%;
+  		}
+  	}	
+	
+		form {
+			display: inline-block;
+			width: 94%;
+			margin: 2% 0 3% 3%;
+
+  			@include desktop {
+  				float: left;
+    			width: 30%;
+    			margin: 2% 0 3% 2%;
+  			}
+
+  			@include widescreen {
+  				float: left;
+    			width: 30%;
+    			margin: 2% 0 2% 2%;
+  			}
+
+			fieldset {
+				background: #FFF;
+				margin: 3% 0;
+
+				legend {
+					font-family: 'Cinzel', serif;
+					font-weight: 600;
+					color: #900;
+				}
+			}
+		}
+
+		p {
+			margin: 5% auto;
+		}
+
+		figure {
+			position: relative;
+			width: 94%;
+			height: 500px;
+			margin: 0 3% 0 3%;
+			background-image: url('../sources/octowarren.png');
+			background-repeat: no-repeat;
+			background-size: 100%;
+
+  			@include desktop {
+  				display: inline-block;
+    			float: right;
+    			width: 60%;
+    			margin: 2% 4% 0 0;
+  			}
+
+  			@include widescreen {
+  				display: inline-block;
+    			float: right;
+    			width: 50%;
+    			height: 700px;
+    			margin: 2% 8% 0 0;
+  			}
+
+			img {
+				position: absolute;
+				max-width: 100%;
+			}
+		}
+}
+
+#druid_menu, #cleric_menu, #mage_menu {
+	display: none;
+}	
+
+	
+
+		
+

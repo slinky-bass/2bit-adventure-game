@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Adventure Time Character Builder">
+
+<title>Adventure time!</title>
+
+<link href='http://fonts.googleapis.com/css?family=Cinzel:400,700' rel='stylesheet' type='text/css'>
+<!-- <link rel="stylesheet" href="css/style.css" type="text/css"> -->
+
+<script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="jquery/create-character-process-test.js"></script>
+
+<!--#################### TEACHES OLDER BROWSERS HTML5 ######################## -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!--############################ IE BUG FIX ################################## -->
+<!--[if lt IE 9]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+
+<!--####################### IMAGE RESIZER SCRIPT ############################# -->
+<!-- The code doesn't work in IE6 or less, so I suggest the following
+conditionally-commented code in your <head> be used to implement the
+JavaScript on your RWD website -->
+<!--[if ! lte IE 6]><!-->
+<script type="text/javascript" src="javascript/imgsizer.js"></script>
+<script type="text/javascript">
+addLoadEvent(function() {
+if (document.getElementById && document.getElementsByTagName) {
+var aImgs =
+document.getElementById("content").getElementsByTagName("img");
+imgSizer.collate(aImgs);
+}
+});
+</script>
+<!--<![endif]-->
+
+<!-- The following script allows all browsers to support media queries in CSS.-->
+<!--[if lt IE 9]>
+<script src="http://css3-mediaqueriesjs.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<form method="get" action="">
+		
+		<fieldset>
+		<legend>Instantiate your character!</legend>
+			<br />
+			<input type="text" class="c_name" name="c_name" required autofocus placeholder="your fantasy inspired name"><br /><br />
+
+			<label for="class">
+		 	<input type="radio" class="c_class" name="c_class" value="Druid">
+		    Druid<br /></label>
+		                    
+		    <label for="class">
+		  	<input type="radio" class="c_class" name="c_class" value="Cleric">
+		    Cleric<br /></label>
+		                    
+		    <label for="class">
+		    <input type="radio" class="c_class" name="c_class" value="Mage">
+		    Mage<br /></label>
+	    </fieldset>
+
+	    <fieldset id="druid_menu">
+	    <legend>Druid weapons</legend>
+	    	<label for="weapon_druid">
+		 	<input type="radio" class="c_weapon" name="c_weapon" value="Club">
+		    Club<br /></label>
+		                    
+		    <label for="weapon_druid">
+		  	<input type="radio" class="c_weapon" name="c_weapon"  value="Animal-companion">
+		    Animal Companion<br /></label>
+	    </fieldset>
+
+	    <fieldset id="cleric_menu">
+	    <legend>Cleric weapons</legend>
+	    	<label for="weapon_cleric">
+		 	<input type="radio" class="c_weapon" name="c_weapon"  value="Mace">
+		    Mace<br /></label>
+		                    
+		    <label for="weapon_cleric">
+		  	<input type="radio" class="c_weapon" name="c_weapon"  value="Hammer">
+		    Hammer<br /></label>
+		                    
+		    <label for="weapon_cleric">
+		    <input type="radio" class="c_weapon" name="c_weapon"  value="Club">
+		    Club<br /></label>
+
+		    <label for="weapon_cleric">
+		    <input type="radio" class="c_weapon" name="c_weapon"  value="Quarterstaff">
+		    Quarterstaff<br /></label>
+	    </fieldset>
+		
+	    <fieldset id="mage_menu">
+	    <legend>Mage weapons</legend>
+	    	<label for="weapon_mage">
+		 	<input type="radio" class="c_weapon" name="c_weapon"  value="Wand">
+		    Wand<br /></label>
+		                    
+		    <label for="weapon_mage">
+		  	<input type="radio" class="c_weapon" name="c_weapon"  value="Staff">
+		    Staff<br /></label>
+	    </fieldset>
+		
+		<fieldset>
+		<legend>Interpolate your choices!</legend>
+			<p id="submit_results"></p>
+			<br />
+		    <input type="button" id="btnsubmit" value="Submit">
+	    </fieldset>
+
+	</form>
+
+	<figure>
+		<img id="class_costume" src="" alt="">
+		<img id="class_weapon" src="" alt="">
+	</figure>
+	<span class="clear_float"></span>
+
+</div>
+
+</body>
+<script>
+
+$(function(){
+
+	$("input.c_name").on("change", function() {
+   		char_name = $(this).val();
+	});
+
+	//ON CHANGE OF CLASS RADIO OPTION CONDITIONALLY DISPLAY RELEVANT MENU AND CLASS COSTUME
+	//TRY THIS AS A SWITCH STATEMENT FOR TOMORROW
+	$("input.c_class").change(function(){	
+
+		char_class = $(this).val();
+		img_src1 = "sources/" + char_class + ".png";
+		$("#class_costume").attr("src", img_src1);
+		
+		if ($(this).val() == ("Druid")){	
+			$("#druid_menu").show();
+		} else {
+			$("#druid_menu").hide();
+		}
+
+		if ($(this).val() == ("Cleric")){
+			$("#cleric_menu").show();
+		} else {
+			$("#cleric_menu").hide();
+		}
+
+		if ($(this).val() == ("Mage")){
+			$("#mage_menu").show();
+		} else {
+			$("#mage_menu").hide();
+		}
+
+		//ON CHANGE OF WEAPON RADIO OPTION CAPTURE VALUE OF CHOICE TO VARIABLE CHAR_WEAPON & DISPLAY WEAPON CHOICE
+		$("input.c_weapon").change(function(){
+			var char_weapon = $(this).val();
+			img_src2 = "sources/" + char_class + char_weapon + ".png";
+			$("#class_weapon").attr("src", img_src2);
+		
+		//ON CHANGE OF CLASS, CLEAR WEAPON IMG
+		//$("input.c_class").change(function(){
+			//$("#class_weapon").attr("src", "");
+		//});
+
+			//ON CLICK OF SUBMIT BUTTON, SUBMIT FORM AND DIPLAY CHOICES
+			$("#btnsubmit").click(function(){
+				$("#submit_results").html("<span class='strong font'>Name: </span>" + char_name + "<br /><span class='strong font'>Class: </span>" + char_class + "<br /><span class='strong font'>Weapon: </span>" + char_weapon);
+			});	
+		});		
+	});	
+});
+
+</script>
+</html>
